@@ -1,0 +1,165 @@
+/* ===========================
+   Variables y Reset
+=========================== */
+:root {
+  --color-pomodoro: #e05c5c;
+  --color-short: #4caf91;
+  --color-long: #4a90d9;
+
+  --bg: #1a1a2e;
+  --surface: #16213e;
+  --surface-alt: #0f3460;
+  --text: #eaeaea;
+  --text-muted: #9a9ab0;
+  --border: rgba(255,255,255,0.08);
+
+  --accent: var(--color-pomodoro);
+  --radius: 12px;
+  --transition: 0.3s ease;
+}
+
+/* Tema por modo */
+body[data-mode="pomodoro"] { --accent: var(--color-pomodoro); }
+body[data-mode="short"]    { --accent: var(--color-short); }
+body[data-mode="long"]     { --accent: var(--color-long); }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+
+/* ===========================
+   App container
+=========================== */
+.app {
+  width: 100%;
+  max-width: 420px;
+  padding: 24px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ===========================
+   Header
+=========================== */
+.app-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--accent);
+  transition: color var(--transition);
+}
+
+/* ===========================
+   Stats
+=========================== */
+.stats-section {
+  display: flex;
+  gap: 40px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  transition: color var(--transition);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===========================
+   Ciclos
+=========================== */
+.cycles-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.cycles-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.cycles-dots {
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--surface-alt);
+  transition: background var(--transition);
+}
+
+.dot.active {
+  background: var(--accent);
+}
+
+.dot.done {
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+/* ===========================
+   Toast
+=========================== */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--surface-alt);
+  color: var(--text);
+  padding: 12px 24px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.hidden { display: none !important; }

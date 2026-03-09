@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/timer.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Header -->
+    <header class="app-header">
+      <h1 class="app-title">Pomodoro Timer</h1>
+      <button class="btn-icon" id="btn-settings" title="Configuración">&#9881;</button>
+    </header>
+
+    <!-- Tabs de modo -->
+    <nav class="mode-tabs">
+      <button class="tab active" data-mode="pomodoro">Pomodoro</button>
+      <button class="tab" data-mode="short">Descanso corto</button>
+      <button class="tab" data-mode="long">Descanso largo</button>
+    </nav>
+
+    <!-- Temporizador -->
+    <section class="timer-section">
+      <div class="timer-ring-wrapper">
+        <svg class="timer-ring" viewBox="0 0 200 200">
+          <circle class="ring-bg" cx="100" cy="100" r="90" />
+          <circle class="ring-progress" id="ring-progress" cx="100" cy="100" r="90" />
+        </svg>
+        <div class="timer-display">
+          <span id="timer-minutes">25</span>:<span id="timer-seconds">00</span>
+        </div>
+      </div>
+
+      <!-- Controles -->
+      <div class="timer-controls">
+        <button class="btn btn-secondary" id="btn-reset" title="Reiniciar">&#8635;</button>
+        <button class="btn btn-primary" id="btn-start">Iniciar</button>
+        <button class="btn btn-secondary" id="btn-skip" title="Saltar">&#10095;&#10095;</button>
+      </div>
+    </section>
+
+    <!-- Contador de ciclos -->
+    <section class="cycles-section">
+      <p class="cycles-label">Ciclo <span id="cycle-current">1</span> de 4</p>
+      <div class="cycles-dots" id="cycles-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </section>
+
+    <!-- Estadísticas del día -->
+    <section class="stats-section">
+      <div class="stat">
+        <span class="stat-value" id="stat-pomodoros">0</span>
+        <span class="stat-label">Pomodoros hoy</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="stat-focus">0m</span>
+        <span class="stat-label">Tiempo enfocado</span>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Modal de configuración -->
+  <div class="modal-overlay hidden" id="modal-settings">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Configuración</h2>
+        <button class="btn-icon" id="btn-close-settings">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <label class="setting-field">
+          <span>Pomodoro (min)</span>
+          <input type="number" id="input-pomodoro" min="1" max="60" value="25" />
+        </label>
+        <label class="setting-field">
+          <span>Descanso corto (min)</span>
+          <input type="number" id="input-short" min="1" max="30" value="5" />
+        </label>
+        <label class="setting-field">
+          <span>Descanso largo (min)</span>
+          <input type="number" id="input-long" min="1" max="60" value="15" />
+        </label>
+        <label class="setting-field">
+          <span>Ciclos antes de descanso largo</span>
+          <input type="number" id="input-cycles" min="1" max="8" value="4" />
+        </label>
+        <label class="setting-field setting-toggle">
+          <span>Sonido al terminar</span>
+          <input type="checkbox" id="input-sound" checked />
+        </label>
+        <label class="setting-field setting-toggle">
+          <span>Auto-iniciar siguiente fase</span>
+          <input type="checkbox" id="input-auto" />
+        </label>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="btn-save-settings">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast de notificación -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/settings.js"></script>
+  <script src="assets/js/notifications.js"></script>
+  <script src="assets/js/timer.js"></script>
+  <script src="assets/js/session.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
