@@ -2,6 +2,10 @@
 
 Aplicación web para gestionar el tiempo con la técnica Pomodoro. Sin dependencias, sin frameworks — HTML, CSS y JavaScript puro.
 
+## Demo
+
+Pruébala en vivo: **https://pomodoro-sand-one.vercel.app**
+
 ## ¿Qué es la técnica Pomodoro?
 
 Divide tu trabajo en bloques de concentración (pomodoros) separados por descansos cortos. Cada 4 pomodoros, tómate un descanso largo.
@@ -24,6 +28,13 @@ Divide tu trabajo en bloques de concentración (pomodoros) separados por descans
 - Persistencia en `localStorage`
 
 ## Uso
+
+### Vercel (online)
+
+La app está desplegada y lista para usar en:
+**https://pomodoro-sand-one.vercel.app**
+
+Cada `git push` al repositorio actualiza el despliegue automáticamente.
 
 ### Sin Docker
 
